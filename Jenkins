@@ -1,10 +1,38 @@
 pipeline {
     agent any
+    
+    tools {
+        maven 'Maven'
+    }
+    
     stages {
-        stage('Hello') {
+        stage('Clone Git Repository') {
             steps {
-                echo 'Hello from Jenkins!'
+                git url: 'https://github.com/Camille250/Enecloudtech-solutions.git',
+                    branch: 'main'
             }
+        }
+        
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        
+        stage('Create Package') {
+            steps {
+                sh 'mvn package -DskipTests'
+                archiveArtifacts artifacts: 'target/*.war,target/*.jar', fingerprint: true
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo '✅ Pipeline completed successfully!'
+        }
+        failure {
+            echo '❌ Pipeline failed!'
         }
     }
 }
