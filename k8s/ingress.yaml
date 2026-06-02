@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: enecloudtech-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: enecloudtech.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: enecloudtech-service
+            port:
+              number: 80

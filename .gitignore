@@ -1,0 +1,38 @@
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+
+# Eclipse IDE
+.classpath
+.project
+.settings/
+
+# IntelliJ / VS Code
+.idea/
+.vscode/
+
+# Terraform - NEVER commit state
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+.terraform.lock.hcl
+crash.log
+
+# Secrets and keys
+*.pem
+*.key
+.env
+.env.local
+secrets/
+
+# Logs and temp
+*.log
+*.tmp
+nohup.out
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: enecloudtech-app
+  labels:
+    app: enecloudtech-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: enecloudtech-app
+  template:
+    metadata:
+      labels:
+        app: enecloudtech-app
+    spec:
+      containers:
+      - name: app
+        image: camille250/enecloudtech-app:v1
+        ports:
+        - containerPort: 8080
